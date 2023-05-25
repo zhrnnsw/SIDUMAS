@@ -3,6 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KepalaDinasController;
+use App\Http\Controllers\MasyarakatController;
+use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\TanggapanController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function(){
-        Route::get('/', [DashboardController::class,'index'])->nama('dashboard');
+        Route::get('/', [DashboardController::class,'index'])->name('dashboard');
         Route::resource('petugas','PetugasController');
         Route::resource('pengaduans','PengaduanController');
         Route::resource('tanggapan','TanggapanController');
@@ -35,12 +42,12 @@ Route::prefix('admin')
 Route::prefix('kepala')
     ->middleware(['auth', 'admin'])
     ->group(function(){
-        Route::get('/', [KepalaDinasController::class,'index'])->nama('masyarakat-dashboard');
+        Route::get('/', [KepalaDinasController::class,'index'])->name('masyarakat-dashboard');
     });
 
 Route::prefix('user')
     ->middleware(['auth', 'MasyarakatController'])
     ->group(function(){
-        Route::get('/', [MasyarakatController::class,'index'])->nama('masyarakat-dashboard');
+        Route::get('/', [MasyarakatController::class,'index'])->name('masyarakat-dashboard');
         Route::resource('pengaduan','MayarakatController');
     });
