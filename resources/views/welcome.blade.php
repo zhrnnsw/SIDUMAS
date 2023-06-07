@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>APLIKASi | Laporan Siswa</title>
+  <title>SISTEM PENGADUAN MASYARAKAT</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -39,7 +39,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Layanan Laporan Siswa Berbasis Online</h1>
+          <h1 data-aos="fade-up">Layanan Pengaduan Masyarakat Berbasis Online</h1>
           <h2 data-aos="fade-up" data-aos-delay="400">Sampaikan laporan masalah Anda di sini, kami akan memprosesnya dengan cepat , aman dan nyaman.</h2>
           <div data-aos="fade-up" data-aos-delay="800">
             <a href="{{ url('login')}}" class="btn-get-started scrollto">Laporkan!</a>
@@ -69,17 +69,17 @@
         <div class="row content">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
             <p>
-              <h3>APLIKASIKU</h3> adalah sistem laporan pengaduan Siswa yang dibuat untuk memudahkan Siswa untuk memberikan laporan atau informasi kepada pihak petugas sekolah
+              <h3>APLIKASIKU</h3> adalah sistem laporan pengaduan Masyarakat yang dibuat untuk memudahkan Masyarakat untuk mengajukan laporan atau informasi kepada pihak Dinas PUPR
             </p>
             <ul>
               <h3>Tujuan APLIKASIKU</h3>
-              <li><i class="ri-check-double-line"></i>Memberikan Informasi atau laporan yang jelas kepada pihak sekolah supaya bisa ditindak lebih lanjut</li>
-              <li><i class="ri-check-double-line"></i>Mempermudah siswa untuk berkomunikasi dengan pihak sekolah</li>
+              <li><i class="ri-check-double-line"></i>Memberikan Informasi atau laporan yang jelas kepada pihak Dinas PUPR supaya bisa ditindak lebih lanjut</li>
+              <li><i class="ri-check-double-line"></i>Mempermudah masyarakat untuk berkomunikasi dengan pihak Dinas PUPR</li>
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
             <p>
-              <h4>APLIKASIKU</h4>merupakan komitmen  kami untuk melayani siswa. Dengan hadirnya sistem pelaporan pengaduan online ini, diharapkan setiap suara siswa bisa didengar dan ditindaklanjuti oleh pihak sekolah.
+              <h4>APLIKASIKU</h4>mmerupakan komitmen kami untuk melayani masyarakat. Dengan hadirnya sistem pelaporan pengaduan online ini, diharapkan setiap suara masyarakat bisa didengar dan ditindaklanjuti oleh pihak Dinas PUPR.
             </p>
             <a href="#services" class="btn-learn-more">Tata cara atau alur pengaduan</a>
           </div>
@@ -112,7 +112,7 @@
                   <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
                     <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Pengaduan</strong> <br> Jumlah pengaduan yg sudah dilaporkan</p>
+                    <p><strong>Pengaduan</strong> <br> Jumlah pengaduan yang sudah dilaporkan</p>
                   </div>
                 </div>
 
@@ -120,7 +120,7 @@
                   <div class="count-box">
                     <i class="bi bi-clock"></i>
                     <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Tuntas</strong> <br> Jumlah laporan yg sudah ditangani</p>
+                    <p><strong>Tuntas</strong> <br> Jumlah laporan yang sudah ditangani</p>
                   </div>
                 </div>
 
