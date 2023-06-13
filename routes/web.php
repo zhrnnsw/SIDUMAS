@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+//Masyarakat
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+  
+    Route::get('/home', [UserController::class, 'index'])->name('user.home');
+});
+  
+//Admin
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+  
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
 });
