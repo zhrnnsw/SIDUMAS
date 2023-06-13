@@ -3,7 +3,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1> <a href="index.html"><img src="assets/img/logo.svg"class="img-fluid"><a href="#">APLIKASIKU</a></h1>
+        <h1> <a href="index.html"><img src="assets/img/logo.svg"class="img-fluid"><a href="#">SIDUMAS</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
        
       </div>
