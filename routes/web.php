@@ -37,6 +37,9 @@ Route::prefix('admin')
         Route::resource('petugas','PetugasController');
         Route::resource('pengaduans','PengaduanController');
         Route::resource('tanggapan','TanggapanController');
+
+        Route::get('masyarakat',[AdminController::class]);
+        Route::get('petugas',PetugasController::class);
     });
 
 Route::prefix('kepala')
