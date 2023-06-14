@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaduan;
+use App\Models\Tingkatan;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -13,7 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.user.home');
+        $tingkatan = Tingkatan::all();
+        return view('pages.user.home',['tingkatan'=> $tingkatan]);
     }
 
     /**
@@ -22,8 +28,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $tingkatan = Tingkatan::all();
+        return view('pages.user.home',['tingkatan'=> $tingkatan]);
     }
 
     /**
@@ -34,7 +41,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'description' => 'required',
+            'image' => 'required',
+            'tingkatan_id' => 'required'
+            ]);
+    
+            $id = Auth::user()->id;
+            
+    
+            /*$data = $request->all();
+            $data['user_id']=$id;
+            $data['image'] = $request->file('image')->store('assets/laporan', 'public');
+            $data['tingkatan_id'] = $request->get('tingkatan_id');
+    
+            Pengaduan::create($data);*/
+
+            $data = new Pengaduan();
+            $data -> user_id = $id;
+            $data -> description = $request->get('description');
+            $data -> image = $request->file('image')->store('assets/laporan', 'public');
+            $data -> tingkatan_id = $request->get('tingkatan_id');
+            $data->save();
+            alert()->success('Berhasil', 'Pengaduan terkirim');
+
+            return redirect('user');
     }
 
     /**
@@ -45,7 +76,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $pengaduan = Pengaduan::find($id);
+        $user_id = $pengaduan->user_id;
+        $user = User::find($user_id);
+        return view('pages.user.pengaduan',['pengaduan' => $pengaduan,'user' => $user]);
     }
 
     /**
@@ -54,31 +88,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         //
     }
+
+    public function lihat()
+    {
+        $pengaduan = Pengaduan::all();
+        return view('pages.user.pengaduanAll',['pengaduan' => $pengaduan]);
+    }
+
 }

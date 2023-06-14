@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pengaduan;
 use App\Http\Requests\StorePengaduanRequest;
 use App\Http\Requests\UpdatePengaduanRequest;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PengaduanController extends Controller
 {
@@ -25,7 +27,7 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        return view('pages.user.home');
+        
     }
 
     /**
@@ -36,7 +38,7 @@ class PengaduanController extends Controller
      */
     public function store(StorePengaduanRequest $request)
     {
-        //
+        
     }
 
     /**
