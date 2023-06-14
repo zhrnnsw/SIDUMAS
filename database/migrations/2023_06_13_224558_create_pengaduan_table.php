@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('status')->default('Belum di Proses');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('tingkatan_id')->references('id')->on('tingkatan')->default(1);
+            $table->foreign('tingkatan_id')->references('id')->on('tingkatan');
             $table->foreign('bidang_id')->references('id')->on('bidang')->nullable();
             $table->softDeletes();
             $table->timestamps();
