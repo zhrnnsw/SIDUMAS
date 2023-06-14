@@ -24,7 +24,7 @@ class CreateUsersSeeder extends Seeder
                 'email'=>'admin@gmail.com',
                 'phone' => '085335249308',
                 'password'=> Hash::make('123456'),
-                'roles'=>'ADMIN',
+                'roles'=> 1,
             ],
             [
                 'nik' => '250405',
@@ -33,7 +33,7 @@ class CreateUsersSeeder extends Seeder
                 'email'=>'kepala@gmail.com',
                 'phone' => '085335249300',
                 'password'=> Hash::make('123456'),
-                'roles'=>'KEPALA',
+                'roles'=>1,
             ],
             [
                 'nik' => '280405',
@@ -42,7 +42,7 @@ class CreateUsersSeeder extends Seeder
                 'email'=>'user@gmail.com',
                 'phone' => '081335249300',
                 'password'=> Hash::make('123456'),
-                'roles'=>'USER',
+                'roles'=>0,
             ],
         ];
     
