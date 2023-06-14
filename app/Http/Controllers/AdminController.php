@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaduan;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +15,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.home');
+        return view('pages.admin.home',[
+            'pengaduan' => Pengaduan::all()->count(),
+            'user' => User::where('roles','=', 'user')->count(),
+            'admin' => User::where('roles', '=', 'admin')->count(),
+            'pending' => Pengaduan::where('status', 'Belum di Proses')->count(),
+            'process' => Pengaduan::where('status', 'Sedang di Proses')->count(),
+            'success' => Pengaduan::where('status', 'Selesai')->count(),
+        ]);
     }
 
     /**
