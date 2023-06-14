@@ -24,7 +24,13 @@ class UpdatePengaduanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required', 
+            'description'=> 'required', 
+            'image'=> 'required', 
+            'status'=> 'required', 
+            'user_id'=> 'required',
+            'tingkatan_id'=> 'required',
+            'bidang_id'=> 'required'
         ];
     }
 }

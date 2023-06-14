@@ -58,7 +58,19 @@ Dashboard
             </p>
           </div>
         </div>
-        
+        </div>
+      <div class="flex justify-center my-4">
+        <a href="{{ url('admin/pengaduan/cetak', $pengaduan->id)}}"
+          class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+          Export ke PDF
+        </a>
+      </div>
+      <div class="flex justify-center my-6">
+        <a href="{{ route('pengaduan.edit', $pengaduan->id)}}"
+          class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+          Ubah Status
+        </a>
+      </div>
       </div>
     </div>
 

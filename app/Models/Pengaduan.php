@@ -37,6 +37,6 @@ class Pengaduan extends Model
     }
     public function bidang()
     {
-        return $this->belongsTo(Bidang::class, 'id','id');
+        return $this->belongsTo(Bidang::class);
     }
 }
