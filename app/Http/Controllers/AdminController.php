@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengaduan;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class AdminController extends Controller
 {
@@ -98,5 +99,23 @@ class AdminController extends Controller
         return view('pages.admin.masyarakat', [
             'data' => $data
         ]);
+    }
+
+    public function laporan() {
+
+        $pengaduan = Pengaduan::all();
+
+        return view('pages.admin.laporan',[
+            'pengaduan' => $pengaduan
+        ]);
+    }
+
+    public function cetak_laporan() {
+
+        $pengaduan = Pengaduan::all();
+
+        $pdf = PDF::loadview('pages.admin.pdf_laporan',['pengaduan' => $pengaduan]);
+        return ($pdf->download('laporan.pdf'));
+        
     }
 }
