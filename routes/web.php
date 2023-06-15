@@ -34,9 +34,10 @@ Route::prefix('user')
     
   
 //Admin
-Route::middleware(['auth', 'user-access:admin'])->group(function () {
-  
-    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
-    Route::resource('/pengaduan',PengaduanController::class);
-    
-});
+Route::prefix('admin')
+    ->middleware(['auth', 'user-access:admin'])
+    ->group(function () {
+        Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
+        Route::resource('pengaduan',PengaduanController::class);
+        Route::get('/masyarakat', [AdminController::class, 'masyarakat'])->name('admin.masyarakat');
+        });

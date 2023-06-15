@@ -90,4 +90,13 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function masyarakat()
+    {
+        $data = User::all()->where('roles','=', 0);
+
+        return view('pages.admin.masyarakat', [
+            'data' => $data
+        ]);
+    }
 }
