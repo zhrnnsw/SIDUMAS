@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class PengaduanController extends Controller
 {
@@ -110,8 +111,25 @@ class PengaduanController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengaduan $pengaduan)
+    public function destroy($id)
     {
-        //
+        $pengaduan = Pengaduan::find($id);
+        $pengaduan->delete();
+
+        Alert::success('Berhasil', 'Pengaduan telah di hapus');
+        return redirect('admin/pengaduan');
+    }
+
+    /**
+     * Summary of cetak_pengaduan
+     * @param mixed $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cetak_pengaduan($id) {
+
+        $pengaduan = Pengaduan::find($id);
+
+        $pdf = PDF::loadview('pages.admin.pdf_pengaduan', compact('pengaduan'))->setPaper('a4');
+        return $pdf->download('pengaduan.pdf');
     }
 }

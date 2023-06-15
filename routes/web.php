@@ -39,5 +39,8 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
         Route::resource('pengaduan',PengaduanController::class);
+        Route::get('/pengaduan/{id}/cetak', [PengaduanController::class, 'cetak_pengaduan'])->name('admin.pengaduan.cetak-pengaduan');
         Route::get('/masyarakat', [AdminController::class, 'masyarakat'])->name('admin.masyarakat');
+        Route::get('/laporan', [AdminController::class, 'laporan'])->name('admin.laporan');
+        Route::get('/laporan/cetak', [AdminController::class, 'cetak_laporan'])->name('admin.laporan.cetak');
         });
