@@ -63,5 +63,6 @@ Data Masyarakat
     </div>
 
   </div>
+  {!! $data->withQueryString()->links('pagination::bootstrap-5') !!}
 </main>
 @endsection

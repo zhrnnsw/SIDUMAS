@@ -94,10 +94,10 @@ class AdminController extends Controller
 
     public function masyarakat()
     {
-        $data = User::all()->where('roles','=', 0);
+        $data = User::where('roles','=', 0)->getQuery()->paginate(15);
 
         return view('pages.admin.masyarakat', [
-            'data' => $data
+            'data' => $data->withQueryString()
         ]);
     }
 
