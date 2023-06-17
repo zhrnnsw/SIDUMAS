@@ -20,7 +20,7 @@
       </a>
 
       <a class="inline-flex items-center text-sm mr-5 font-semibold transition-colors duration-150 "
-        href="{{ url('user/pengaduan')}} ">
+        href="{{ url('user/lihat')}} ">
 
         <span class="ml-4">Pengaduan</span>
       </a>
