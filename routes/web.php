@@ -23,13 +23,26 @@ Route::get('/', function () {
 Auth::routes();
 
 //Masyarakat
-Route::middleware(['auth', 'user-access:user'])->group(function () {
-  
-    Route::get('/home', [UserController::class, 'index'])->name('user.home');
-});
+Route::prefix('user')
+    ->middleware(['auth', 'user-access:user'])
+    ->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('user.home');
+        Route::resource('pengaduans', UserController::class);
+        Route::get('lihat',[UserController::class,'lihat'])->name('user.lihat');
+
+    });
+
+    
   
 //Admin
-Route::middleware(['auth', 'user-access:admin'])->group(function () {
-  
-    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
-});
+Route::prefix('admin')
+    ->middleware(['auth', 'user-access:admin'])
+    ->group(function () {
+        Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
+        Route::resource('pengaduan',PengaduanController::class);
+        Route::get('/pengaduan/{id}/cetak', [PengaduanController::class, 'cetak_pengaduan'])->name('admin.pengaduan.cetak-pengaduan');
+        Route::get('/masyarakat', [AdminController::class, 'masyarakat'])->name('admin.masyarakat');
+        Route::get('/laporan', [AdminController::class, 'laporan'])->name('admin.laporan');
+        Route::get('/laporan/cetak', [AdminController::class, 'cetak_laporan'])->name('admin.laporan.cetak');
+        });
+

@@ -4,15 +4,15 @@
     <img src="{{ asset('img/logo.svg')}}" alt=""
       class="inline-flex ml-3 items-center transform transition hover:scale-125 duration-300 ease-in-out" />
     <a class="ml-3 text-lg font-bold text-gray-800 dark:text-gray-200" href="/">
-      APLIKASIKU
+      SIDUMAS
     </a>
     <ul class="mt-6">
       <li class="relative px-6 py-3">
         <span
-          class="{{ (request()->routeIs('dashboard')) ? 'absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg' : '' }} "
+          class="{{ (request()->routeIs('admin.home')) ? 'absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg' : '' }} "
           aria-hidden="true"></span>
         <a class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          href="{{ route('dashboard')}} ">
+          href="{{ route('admin.home')}} ">
           <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path
               d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -24,10 +24,10 @@
     <ul>
       <li class="relative px-6 py-3">
         <span
-          class="{{ (request()->routeIs('pengaduans.index')) ? 'absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg' : '' }} "
+          class="{{ (request()->routeIs('pengaduan.index')) ? 'absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg' : '' }} "
           aria-hidden="true"></span>
         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          href="{{ route('pengaduans.index')}}">
+          href="{{ route('pengaduan.index')}}">
           <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd"
               d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"
@@ -53,24 +53,6 @@
         </a>
       </li>
     </ul>
-    @if( Auth::user()->roles == 'ADMIN')
-
-    <ul>
-      <li class="relative px-6 py-3">
-        <span
-          class="{{ (request()->is('admin/petugas')) ? 'absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg' : '' }} "
-          aria-hidden="true"></span>
-        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          href="{{ route('petugas.index')}}">
-          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-            <path
-              d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-          </svg>
-          <span class="ml-4">Petugas</span>
-        </a>
-      </li>
-    </ul>
-    @endif
     <ul>
       <li class="relative px-6 py-3">
         <span
@@ -105,7 +87,7 @@
   @keydown.escape="closeSideMenu">
   <div class="py-4 text-gray-500 dark:text-gray-400">
     <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-      APLIKASIKU
+      SIDUMAS
     </a>
     <ul class="mt-6">
       <li class="relative px-6 py-3">
