@@ -58,11 +58,12 @@ Data Masyarakat
             @endforelse
           </tbody>
         </table>
+        {!! $data->withQueryString()->links('pagination::bootstrap-5') !!}
       </div>
 
     </div>
 
   </div>
-  {!! $data->withQueryString()->links('pagination::bootstrap-5') !!}
+  
 </main>
 @endsection

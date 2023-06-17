@@ -18,8 +18,8 @@ class AdminController extends Controller
     {
         return view('pages.admin.home',[
             'pengaduan' => Pengaduan::all()->count(),
-            'user' => User::where('roles','=', 'user')->count(),
-            'admin' => User::where('roles', '=', 'admin')->count(),
+            'user' => User::where('roles','=', 0)->count(),
+            'admin' => User::where('roles', '=', 1)->count(),
             'pending' => Pengaduan::where('status', 'Belum di Proses')->count(),
             'process' => Pengaduan::where('status', 'Sedang di Proses')->count(),
             'success' => Pengaduan::where('status', 'Selesai')->count(),
@@ -94,10 +94,10 @@ class AdminController extends Controller
 
     public function masyarakat()
     {
-        $data = User::where('roles','=', 0)->getQuery()->paginate(15);
+        $data = User::where('roles','=', 0)->paginate(5);
 
         return view('pages.admin.masyarakat', [
-            'data' => $data->withQueryString()
+            'data' => $data
         ]);
     }
 
