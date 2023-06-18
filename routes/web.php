@@ -27,6 +27,7 @@ Route::prefix('user')
     ->middleware(['auth', 'user-access:user'])
     ->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('user.home');
+        Route::get('/home', [UserController::class, 'index']);
         Route::resource('pengaduans', UserController::class);
         Route::get('lihat',[UserController::class,'lihat'])->name('user.lihat');
 
