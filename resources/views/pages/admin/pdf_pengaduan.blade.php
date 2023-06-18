@@ -19,7 +19,7 @@
 <body>
   <div class="container">
     <div class="title text-center mb-5">
-      <h2>Layanan Pengaduan Masyarakat Online</h2>
+      <h2>SIDUMAS</h2>
     </div>
     <hr class="solid">
 
@@ -31,6 +31,7 @@
     
     <div class="mt-3 mb-3">
       <h6>Nama : {{ $pengaduan->user->name }}</h6>
+      <h6>Username : {{ $pengaduan->user->Uname }}</h6>
       <h6>NIK : {{ $pengaduan->user->nik }}</h6>      
       <h6>No. Telepon : {{ $pengaduan->user->phone }}</h6>      
     </div>
@@ -39,12 +40,18 @@
       <thead class="thead">
         <tr>
           <th scope="col">Laporan Pengaduan</th>
+          <th scope="col">Tingkatan</th>
           <th scope="col">Status</th>
+          <th scope="col">Penindak Lanjut</th>
         </tr>
       </thead>
       <tbody>
         <td>{{ $pengaduan->description }}</td>
+        <td>{{ $pengaduan->tingkatan->keterangan }}</td>
         <td>{{ $pengaduan->status }}</td>
+        @if ($pengaduan->status !='Belum di Proses')
+          <td>{{ $pengaduan->bidang->nama_bidang }}</td>
+        @endif
       </tbody>
     </table>
   </div>

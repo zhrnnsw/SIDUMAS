@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>APLIKASI | Pengaduan Masyarakat</title>
+  <title>SIDUMAS</title>
   
   <style>
     .thead{
@@ -13,23 +13,25 @@
     
     }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-  <div class="container mt-5">
+  <div class="container">
     <div class="title text-center mb-5">
-      <h2>Laporan Layanan Pengaduan Online</h2>
+      <h2>Laporan Pengaduan SIDUMAS</h2>
     </div>
     <table class="table table-bordered">
       <thead class="thead">
-        <tr>
+        <tr class="">
           <th scope="col">No</th>
-          <th scope="col">NIK</th>
-          <th scope="col">Nama</th>
+          <th scope="col">Username</th>
           <th scope="col">Pengaduan</th>
           <th scope="col">Tanggal</th>
+          <th scope="col">Tingkatan</th>
           <th scope="col">Status</th>
+          <th scope="col">Penindaklanjut</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -37,11 +39,14 @@
           
         <tr>
           <td>{{ $item->id }} </td>
-          <td>{{ $item->user->nik }}</td>
-          <td>{{ $item->user->name }}</td>
+          <td>{{ $item->user->username }}</td>
           <td>{{ $item->description }}</td>
           <td>{{ $item->created_at->format('l, d F Y') }}</td>
+          <td>{{ $item->tingkatan->keterangan }}</td>
           <td>{{ $item->status }}</td>
+          @if ($item->status !='Belum di Proses')
+          <td>{{ $item->bidang->nama_bidang }}</td>
+          @endif
 
         </tr>
         @endforeach

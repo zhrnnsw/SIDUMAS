@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Tanggapan
+Ubah Status
 @endsection
 
 @section('content')

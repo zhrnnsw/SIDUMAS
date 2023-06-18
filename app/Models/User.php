@@ -53,4 +53,11 @@ class User extends Authenticatable
             get: fn ($value) => ["user", "admin"][$value],
         );
     }
+
+    public function getRedirectRoute(){
+        return match((int)$this->roles){
+            0 => 'user.home',
+            1 => 'admin.home',
+        };
+    }
 }
