@@ -18,7 +18,6 @@ class Pengaduan extends Model
         'description', 
         'image', 
         'status', 
-        'user_nik', 
         'user_id',
         'id_tingkatan',
         'id_bidang'
@@ -29,15 +28,15 @@ class Pengaduan extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_nik', 'nik');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function tingkatan()
     {
-        return $this->belongsTo(Tingkatan::class, 'id','id');
+        return $this->belongsTo(Tingkatan::class);
     }
     public function bidang()
     {
-        return $this->belongsTo(Bidang::class, 'id','id');
+        return $this->belongsTo(Bidang::class);
     }
 }

@@ -6,6 +6,8 @@ use App\Models\Pengaduan;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -18,8 +20,8 @@ class AdminController extends Controller
     {
         return view('pages.admin.home',[
             'pengaduan' => Pengaduan::all()->count(),
-            'user' => User::where('roles','=', 'user')->count(),
-            'admin' => User::where('roles', '=', 'admin')->count(),
+            'user' => User::where('roles','=', 0)->count(),
+            'admin' => User::where('roles', '=', 1)->count(),
             'pending' => Pengaduan::where('status', 'Belum di Proses')->count(),
             'process' => Pengaduan::where('status', 'Sedang di Proses')->count(),
             'success' => Pengaduan::where('status', 'Selesai')->count(),
@@ -66,7 +68,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view(('pages.admin.editUser'),['user' => $user],compact('user'));
     }
 
     /**
@@ -78,7 +81,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        DB::table('users')->where('id', $id)->update([
+            'roles'=> $request->roles,
+        ]);
+        Alert::success('Berhasil', 'Pengaduan berhasil ditanggapi');
+        return redirect('admin/masyarakat');
     }
 
     /**
@@ -89,16 +97,25 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        Alert::success('Berhasil', 'User telah di hapus');
+        return redirect('admin/masyarakat');
     }
 
     public function masyarakat()
     {
-        $data = User::all()->where('roles','=', 0);
+        $data = User::where('roles','=', 0)->paginate(5);
 
-        return view('pages.admin.masyarakat', [
-            'data' => $data
-        ]);
+        return view('pages.admin.masyarakat', ['data' => $data]);
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $data = User::where('username', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('pages.admin.masyarakat', ['data' => $data])->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function laporan() {

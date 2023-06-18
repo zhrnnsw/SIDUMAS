@@ -120,6 +120,12 @@ class PengaduanController extends Controller
         return redirect('admin/pengaduan');
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $pengaduan = Pengaduan::where('id', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('pages.admin.pengaduan', ['pengaduan' => $pengaduan])->with('i', (request()->input('page', 1) - 1) * 5);
+    }
     /**
      * Summary of cetak_pengaduan
      * @param mixed $id
